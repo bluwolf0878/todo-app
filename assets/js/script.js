@@ -1,40 +1,40 @@
-// write cool JS hwere!!
+
+document.getElementById("mtl").addEventListener ("click", ()=>{
+
+
+    let todoname = document.getElementById("todoname").value
+
+   makeList(todoname)
+
+
+
+});
+
+document.getElementById("mti").addEventListener ("click", ()=>{
+
+    let todoitem = document.getElementById("todoitem").value
+    makeItem(0,todoitem)
+
+    console.table(myData)
+
+
+})
+
 let myData = [] // array der indeholder alle list descriptions
 
 // generate data write data
-
-
-//
 let myTodoList = {
     name: 'liste 1',//key value pair
     listItems: []
 }
-console.log(myTodoList.listItems);
 
 let myListItem = {
     name: 'stå op',
     status: true
 }
-
-console.log(myListItem);
-
-
-
 myTodoList.listItems.push(myListItem) // adder item to itemlist
 
-console.log(myTodoList);
-
 myData.push(myTodoList)
-
-console.log('my data: ' + myData);
-
-
-
-// read data
-
-console.log(myData[0].listItems[0].status);
-
-
 
 // modtager et navn,string og skaber et ny liste dataobjekt og gemmer det i myData-------------------------
 function makeList(myName) {
@@ -44,34 +44,19 @@ function makeList(myName) {
     }
 
     myData.push(myList)
-
-    console.table(myData);
+    console.table(myData)
 }
-
-makeList('køkken liste')
-
 // --------------------------------------------------------
-
-
 // modtager et navn og opretter list item i første to do list
-
 function makeItem(index, myName) {
 
     let myListItem = {
         name: myName,
         status: true
     }
-
     myData[index].listItems.push(myListItem)
-
-    console.table(myData);
 }
-
-makeItem(1, 'vask op')
-
-
 // modtager et index for listen, og et index for item, og fjerner dette item fra listen.
-
 function removeItem(listIndex, itemIndex) {
     let myList = myData[listIndex]
 
@@ -80,6 +65,48 @@ function removeItem(listIndex, itemIndex) {
     myList.listItems.splice(itemIndex, 1)
 
 }
+//------------------------------------------
+function showList(myListIndex) {
+
+    let myList = myData[myListIndex]
+
+    let listElement = document.getElementById('listElement')
+
+    listElement.innerHTML = `<h2>${myList.name}</h2>`
 
 
-removeItem(1, 0)
+
+
+    let myHtml = ''
+
+    myList.listItems.forEach((element, index) => {
+        myHtml += `<div><h3 onclick="itemCallBack(${index})">${element.name}</h3></div>`
+    });
+
+
+    listElement.innerHTML += myHtml
+
+
+}
+
+function itemCallBack(index) {
+    console.log(index);
+    removeItem(0, index)
+    showList(0)
+}
+//----------------------------------------------------------------------
+function makeDummyData() {
+    makeList("liste 1")
+    makeList("liste 2")
+
+    makeItem(0, 'opgave 1')
+    makeItem(0, 'opgave 2')
+    makeItem(0, 'opgave 3')
+    makeItem(0, 'opgave 4')
+
+    makeItem(1, 'opgave 1')
+    makeItem(1, 'opgave 2')
+    makeItem(1, 'opgave 3')
+    makeItem(1, 'opgave 4')
+
+}
