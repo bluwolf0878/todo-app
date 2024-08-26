@@ -1,0 +1,12 @@
+h2 {
+    display: inline;
+  }
+  
+  #dropdownContent {
+    display: block;
+    background-color: blueviolet;
+  }
+  
+  .hidden {
+    display: none !important;
+  }

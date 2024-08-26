@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
 </head>
+
 <body>
-    
+
+    <!-- statics -->
+    <header>
+        <h2 id="icon">M</h2>
+        <h2 id="listTitle">dropdown</h2>
+    </header>
+
+    <!-- dynamic element -->
+    <section id="dropdownContent" class="hidden">
+        <ul>
+            <li onclick="callback('1')">option 1</li>
+            <li onclick="callback('2')">option 2</li>
+            <li onclick="callback('3')">option 3</li>
+            <li onclick="callback('4')">option 4</li>
+        </ul>
+    </section>
+
+
+
+
+
+
+
 </body>
+
 </html>
