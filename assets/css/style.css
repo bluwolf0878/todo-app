@@ -1,15 +1,130 @@
+* {
+    margin: 10px 0;
+    padding: 0;
+}
+
+:root{
+    --light: #fefefe;
+    --dark: #333333; 
+    --secondary: #F6F6F6;
+    --accent: #4189F6;
+    --container-list: #7EAEF6;
+    --button-ok: #75E18C;
+    --button-cancel: #E17975;
+    --purple: #881a51;
+    --text-large: 5rem;
+}
+body{
+    color: var(--light);
+    font-family: sans-serif;
+    font-weight: 200;
+    text-transform: capitalize;
+}
 h2 {
     display: inline;
   }
-  
+  body > header{
+    display: flex;
+    position: relative;
+    height: 100px; 
+  }
+  #icon{
+    background-color: var(--accent);
+    margin-right: 5rem;
+    margin-left: 2rem;
+  }
+  /* nav */
   #dropdownContent {
+    position: absolute;
+    top: 80%;
+    right: 0;
+    left: 0;
     display: block;
-    background-color: blueviolet;
+    background-color: var(--accent);
+    z-index: 3;
+  }
+  #dropdownContent ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--light);
+    font-size: 1.5rem;
+  }
+  #dropdownContent ul li{
+    border: 1px dashed var(--purple);
+    margin-bottom: 0.5rem;
   }
   
   .hidden {
     display: none !important;
   }
   #container{
-    background-color: aqua;
+    position: relative;
+    background-color: var(--container-list);
+    min-height: 70vh;
+    padding: 0.5rem 2rem;
+    margin: 0 1rem;
+    border-radius: 2rem;
+    overflow: scroll;
+  }
+  #container > div{
+    display: grid;
+    grid-template-columns: 2rem auto;
+    gap: 1rem;
+  }
+  #container img{
+    margin: 1rem;
+    display: block;
+    width: 100%;
+  }
+  #container h3{
+    margin-left: 1rem;
+  }
+  #container div:last-of-type{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 50%; 
+    transform: translate(-50%, 0);
+    font-size: var(--text-large);
+  }
+  #container input{
+    display: block;
+    width: 80%;
+    margin: 3rem auto 2rem auto;
+    padding: 1rem;
+  }
+  #container input::placeholder{
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333333;
+  }
+  .containerbuttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #container button{
+    display: inline-block;
+    width: 100px;
+    padding: 5px 0;
+    border-radius: 6px;
+    border: none;
+  }
+  #container button:nth-child(1){
+    background-color: var(--button-ok);
+  }
+  #container button:nth-child(2){
+    background-color: var(--button-cancel);
+  }
+  body{
+    background-color: var(--accent);
+  }
+  body > footer{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--accent);
   }
