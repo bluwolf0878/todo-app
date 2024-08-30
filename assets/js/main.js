@@ -3,7 +3,7 @@ let myData = []
 let curentlist = 0
 
 
-makeDummyData()
+readData()
 makemenu()
 
 let myIcon = document.getElementById('icon')
@@ -19,7 +19,6 @@ myIcon.addEventListener('click', (event) => {
 })
 
 function callback(myInfo) {
-    console.log(myInfo);
     myDropDown.classList.toggle('hidden')
     showList(myInfo)
 }
@@ -38,7 +37,6 @@ function makeDummyData() {
     myTodoList.listItems.push(myListItem) // adder item to itemlist
 
     myData.push(myTodoList)
-    console.log(myData);
 
 }
 
@@ -52,7 +50,7 @@ function makeList(myName) {
 
     myData.push(myList)
     curentlist = myData.length - 1
-    console.table(myData)
+    savedata()
 }
 
 // --------------------------------------------------------
@@ -64,26 +62,30 @@ function makeItem(index, myName) {
         status: true
     }
     myData[index].listItems.push(myListItem)
+    savedata()
 }
 
 // modtager et index for listen, og et index for item, og fjerner dette item fra listen.
 function removeItem(itemIndex) {
     let myList = myData[curentlist]
 
-    console.log(myList.listItems);
-
     myList.listItems.splice(itemIndex, 1)
+    savedata()
 
 }
 function removeList(curentlist) {
     myData.splice(curentlist, 1)
     curentlist = myData.length - 1
+    savedata()
     showList()
     makemenu()
 }
 // show item list and functions
 function showList(myListIndex) {
     curentlist = myListIndex
+    if (myData.length > 0) {
+        
+    
 
     let myList = myData[myListIndex]
     if (myList) {
@@ -113,7 +115,7 @@ function showList(myListIndex) {
         titelelement.innerHTML = ''
     }
 
-
+}
 }
 
 function makemenu() {
@@ -133,7 +135,7 @@ function makemenu() {
 }
 
 function itemCallBack(index) {
-    console.log(index)
+    myDropDown.classList.toggle('hidden')
     showList(index)
 
 }
@@ -213,4 +215,22 @@ Delete.addEventListener('click', (event) => {
 function deleteitemcallback(index) {
     removeItem(index)
     showList(curentlist)
+}
+
+// save data
+function savedata() {
+    let savedata = JSON.stringify(myData)
+    localStorage.setItem('appData',savedata)
+    
+}
+//read data
+function readData() {
+   let getData = localStorage.getItem('appData')
+    myData = JSON.parse(getData)
+    if (myData) {
+        
+    } else{
+        myData = [] 
+    }
+    showList(0)
 }
