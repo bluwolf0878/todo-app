@@ -23,24 +23,6 @@ function callback(myInfo) {
     showList(myInfo)
 }
 
-function makeDummyData() {
-
-    let myTodoList = {
-        name: 'liste 1',//key value pair
-        listItems: []
-    }
-
-    let myListItem = {
-        name: 'stå op',
-        status: true
-    }
-    myTodoList.listItems.push(myListItem) // adder item to itemlist
-
-    myData.push(myTodoList)
-
-}
-
-
 // modtager et navn,string og skaber et ny liste dataobjekt og gemmer det i myData-------------------------
 function makeList(myName) {
     let myList = {
@@ -75,7 +57,7 @@ function removeItem(itemIndex) {
 }
 function removeList(curentlist) {
     myData.splice(curentlist, 1)
-    curentlist = myData.length - 1
+    curentlist = myData.length -1
     savedata()
     showList()
     makemenu()
@@ -208,7 +190,7 @@ function Cancelcallback() {
 Delete.addEventListener('click', (event) => {
     console.log('delete');
 
-    removeList()
+    removeList(curentlist)
 
 })
 // delete item
