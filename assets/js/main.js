@@ -65,11 +65,13 @@ function removeList(curentlist) {
 // show item list and functions
 function showList(myListIndex) {
     curentlist = myListIndex
+    //vis min data er 0 eller mindrer
     if (myData.length > 0) {
         
     
 
     let myList = myData[myListIndex]
+    //vis der er data i min mylist
     if (myList) {
 
         let listElement = document.getElementById('container')
@@ -89,7 +91,9 @@ function showList(myListIndex) {
         myHtml += '<div  onclick="makenewitemView()">+</div>'
 
         listElement.innerHTML += myHtml
-    } else {
+    } 
+    //vis der ikke er data in min mylist
+    else {
         let listElement = document.getElementById('container')
         let titelelement = document.getElementById('listTitle')
 
@@ -104,13 +108,20 @@ function makemenu() {
 
     let listElement = document.getElementById('dropdownContent')
     listElement.innerHTML = ''
-
-    let myHtml = '<ul>'
-
+    let myHtml = ''
+    // vis det er en array der ikke er tom
+if (Array.isArray(myData)&& myData.length<0) {
+    
+    myHtml = '<ul>'
     myData.forEach((element, index) => {
         myHtml += `<li onclick="itemCallBack(${index})">${element.name}</li>`
     });
     myHtml += '</ul>'
+}
+// vis der ikke er en array eller den er tom
+else{    
+    myHtml += `<h1>no list</h1>`
+}
 
     listElement.innerHTML += myHtml
 
@@ -209,9 +220,12 @@ function savedata() {
 function readData() {
    let getData = localStorage.getItem('appData')
     myData = JSON.parse(getData)
+    //vis der er data i mydata så skal den vise showlist med den færste i arrayen
     if (myData) {
         
-    } else{
+    } 
+    //vis der ikke er data i min mydata skal den ikke vis noget
+    else{
         myData = [] 
     }
     showList(0)
